@@ -30,7 +30,11 @@ jobs:
     steps:
       - name: pull image from the docker hub
         run: sudo docker pull vrajpaatel/react_app:latest
+      - name: stop old container
+        run: sudo docker stop react_app
+      - name: delete old container
+        run : sudo docker rm react_app
       - name: run docker container
-        run: sudo docker run -d -p 4173:4173 vrajpaatel/react_app
+        run: sudo docker run -d --name react_app -p 4173:4173 vrajpaatel/react_app
 
     
